@@ -1,6 +1,6 @@
 #header
   .header_bar
-    .wordmark= link_to 'Foosball Tracker', (current_user ? leagues_path : root_path)
+    .wordmark= link_to 'FoosChamp', (current_user ? leagues_path : root_path)
     %ul.links
       - if current_user
         %li= link_to 'Offices', leagues_path

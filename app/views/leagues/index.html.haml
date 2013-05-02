@@ -3,7 +3,7 @@
 %h1= yield :title
 
 - if collection.exists?
-  %p These are all the offices recording games in Foosball Tracker.
+  %p These are all the offices recording games in FoosChamp.
   
   - collection.order('games_count DESC').includes(:users).each do |league|
     %h2= league.name

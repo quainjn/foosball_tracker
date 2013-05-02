@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20121028200930) do
 
   create_table "games", :force => true do |t|
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "goals_count",    :default => 0
-    t.boolean   "rating_pending", :default => true
-    t.integer   "league_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "goals_count",    :default => 0
+    t.boolean  "rating_pending", :default => true
+    t.integer  "league_id"
   end
 
   add_index "games", ["goals_count"], :name => "index_games_on_goals_count"
@@ -42,36 +42,36 @@ ActiveRecord::Schema.define(:version => 20121028200930) do
   end
 
   create_table "players", :force => true do |t|
-    t.integer   "team_id"
-    t.integer   "user_id"
-    t.string    "position",        :default => "Offense"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.decimal   "skill_mean",      :default => 0.0
-    t.decimal   "skill_deviation", :default => 0.0
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.string   "position",                                       :default => "Offense"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "skill_mean",      :precision => 12, :scale => 5, :default => 0.0
+    t.decimal  "skill_deviation", :precision => 12, :scale => 5, :default => 0.0
   end
 
   create_table "sessions", :force => true do |t|
-    t.string    "email"
-    t.string    "password"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", :force => true do |t|
-    t.integer   "game_id"
-    t.integer   "goals",      :default => 0
-    t.boolean   "is_winner",  :default => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "game_id"
+    t.integer  "goals",      :default => 0
+    t.boolean  "is_winner",  :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string    "name"
-    t.string    "email"
-    t.string    "password_digest"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

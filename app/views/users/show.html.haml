@@ -74,7 +74,7 @@
   .span8
     %h3= pluralize resource.wins_count, 'Win'
     - wins = resource.wins.order('games.created_at DESC').includes([:league, {:players => :user}]).page(1)
-    - if wins.exists?
+    - if wins
       = render :partial => 'games/game', :collection => wins
     - else
       %p
@@ -83,7 +83,7 @@
   .span8
     %h3= pluralize resource.losses_count, 'Loss'
     - losses = resource.losses.order('games.created_at DESC').includes([:league, {:players => :user}]).page(1)
-    - if losses.exists?
+    - if losses
       = render :partial => 'games/game', :collection => losses
     - else
       %p
