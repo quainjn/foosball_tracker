@@ -37,6 +37,8 @@ end
 
 gem 'jquery-rails'
 
+gem "ducksboard", :git => 'git://github.com/jhsu/ducksboard.git'
+
 # Use thin as the production web server
 # group :production do
 #  gem 'thin'
