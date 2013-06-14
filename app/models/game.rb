@@ -18,7 +18,8 @@ class Game < ActiveRecord::Base
   before_validation :mark_winner, :unless => :winner_marked?
   after_save :invalidate_following_games
   after_destroy :invalidate_following_games
-
+  after_create :push_to_ducksboard
+    
   validates_size_of :teams, :is => 2
   validates_each :teams do |record, attr, value|
     record.errors.add '', "One of the teams must have at least 10 goals" if value.select(&:is_winner?).size < 1
@@ -41,7 +42,15 @@ class Game < ActiveRecord::Base
   def name
     "Game #{id}"
   end
-
+  
+  def push_to_ducksboard
+    user_ranks = User.all.sort_by(&:current_rank).reverse.collect{|user| {name: user.name, values: [user.wins_count, user.losses_count, "#{'%0.1f' % user.current_rank}"] }}
+    
+    widget = Leaderboard.new("176909")
+    widget.value = user_ranks.to_json
+    widget.save    
+  end
+  
   # Initialize for a doubles match
   def build_for_doubles
     teams.build(:goals => 10 )
@@ -114,5 +123,7 @@ class Game < ActiveRecord::Base
         Game.rate_pending_games!
       end
     end
+    
+    push_to_ducksboard
   end
 end

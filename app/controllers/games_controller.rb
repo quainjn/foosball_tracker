@@ -11,8 +11,7 @@ class GamesController < ApplicationController
   
   respond_to :html
   
-  after_destroy :push_to_ducksboardg
-  after_create :push_to_ducksboard
+
   
   def new
     new! do
@@ -25,15 +24,6 @@ class GamesController < ApplicationController
   end
   
   protected
-  
-  def push_to_ducksboard
-    users = rankings
-    user_ranks = users.all.sort_by(&:current_rank).reverse.collect{|user| {name: user.name, values: [user.wins_count, user.losses_count, "#{'%0.1f' % user.current_rank}"] }}
-    
-    widget = Leaderboard.new("176909")
-    widget.value = user_ranks.to_json
-    widget.save    
-  end
   
   def authorize_for_delete
     unless resource.users.include?(current_user)
