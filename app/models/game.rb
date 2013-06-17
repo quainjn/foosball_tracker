@@ -44,7 +44,7 @@ class Game < ActiveRecord::Base
   end
   
   def push_to_ducksboard
-    user_ranks = User.all.sort_by(&:current_rank).reverse.collect{|user| {name: user.name, values: ["#{user.wins_count user}|#{losses_count}", "#{'%0.1f' % user.current_rank}"] }}
+    user_ranks = User.all.sort_by(&:current_rank).reverse.collect{|user| {name: user.name, values: ["#{user.wins_count}|#{user.losses_count}", "#{'%0.1f' % user.current_rank}"] }}
     
     widget = Ducksboard::Leaderboard.new("177502")
     widget.linha = user_ranks
