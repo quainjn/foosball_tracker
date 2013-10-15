@@ -4,4 +4,7 @@ class PagesController < ApplicationController
       redirect_to leagues_path
     end
   end
+  
+  def test
+  end
 end
