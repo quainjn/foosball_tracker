@@ -15,9 +15,14 @@
     
     - if current_user
       - if resource.users.where(:id => current_user.id).exists?
-        %p= link_to "Leave #{resource.name}", leave_league_path(resource), :class => 'btn', :method => :post
+        %p
+          = form_tag leave_league_path(resource) do
+            = submit_tag "Leave #{resource.name}"
       - else
-        %p= link_to "Join #{resource.name}", join_league_path(resource), :class => 'btn btn-primary', :method => :post
+        %p
+          = form_tag join_league_path(resource) do
+            = submit_tag "Join #{resource.name}", :class => 'btn-primary'
+
   
   .span6
     %h2 Games
