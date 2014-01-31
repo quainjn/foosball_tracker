@@ -21,6 +21,7 @@
   .section.actions
     - if resource.new_record?
       = f.submit 'Record Game', :class => 'btn-primary'
+      = f.submit 'Save and Record Another Game', :name => 'create_and_new'
       or #{link_to 'cancel', parent_path}
     - else
       = f.submit 'Save Game', :class => 'btn-primary'
