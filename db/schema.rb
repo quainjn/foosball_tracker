@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(:version => 20130713055352) do
   add_index "games", ["league_id"], :name => "index_games_on_league_id"
 
   create_table "league_memberships", :force => true do |t|
-    t.integer   "league_id"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "league_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "league_memberships", ["league_id"], :name => "index_league_memberships_on_league_id"
