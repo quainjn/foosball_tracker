@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.12'
+gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -22,7 +22,6 @@ gem 'haml'
 
 gem 'json'
 gem 'sass'
-gem 'coffee-script'
 group :production do
   # gem 'execjs' #javascript executable
 end
@@ -30,12 +29,12 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 gem "ducksboard", :git => 'git://github.com/jhsu/ducksboard.git'
 
